@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micka Onboarding — Film-labor</title>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --accent: #e94560;
+            --accent2: #0f3460;
+            --green: #2ecc71;
+            --orange: #f39c12;
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --light-text: #7f8c8d;
+            --border: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .nav {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav h3 {
+            margin-bottom: 0.75rem;
+            color: var(--accent2);
+        }
+
+        .nav a {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            margin: 0.25rem;
+            background: var(--bg);
+            color: var(--accent2);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--accent2);
+            color: white;
+        }
+
+        section {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--accent2);
+        }
+
+        h4 {
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem;
+            color: var(--text);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-left: 5px solid var(--green);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 1.05rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-left: 5px solid var(--orange);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        .danger-box {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            border-left: 5px solid var(--accent);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .role-yes, .role-no {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .role-yes {
+            background: #e8f5e9;
+            border: 2px solid var(--green);
+        }
+
+        .role-no {
+            background: #fce4ec;
+            border: 2px solid var(--accent);
+        }
+
+        .role-yes h4, .role-no h4 {
+            margin-top: 0;
+        }
+
+        .role-yes li::marker { color: var(--green); }
+        .role-no li::marker { color: var(--accent); }
+
+        .script-card {
+            background: #f0f4ff;
+            border: 2px solid var(--accent2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        .script-card h4 {
+            color: var(--accent2);
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .script-card .label {
+            display: inline-block;
+            background: var(--accent2);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        blockquote {
+            background: #fafafa;
+            border-left: 4px solid var(--accent2);
+            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+            color: #34495e;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:nth-child(even) { background: #f8f9fa; }
+        tr:hover { background: #e8f4fd; }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 0.6rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .pipeline-diagram {
+            background: var(--primary);
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin: 1rem 0;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .kpi-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .kpi-item {
+            background: linear-gradient(135deg, var(--accent2), var(--primary));
+            color: white;
+            padding: 1.25rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .kpi-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .kpi-item .label {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .big-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent2));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .big-box h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .big-box p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .big-box .emphasis {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 1rem;
+            display: block;
+        }
+
+        .sequence-timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 1rem 0;
+        }
+
+        .sequence-timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent2);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0.75rem 0 0.75rem 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.55rem;
+            top: 1.1rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent2);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--accent2);
+        }
+
+        .timeline-item.active::before {
+            background: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .tag-bruder { background: #e3f2fd; color: #1565c0; }
+        .tag-koren { background: #f3e5f5; color: #7b1fa2; }
+        .tag-micka { background: #e8f5e9; color: #2e7d32; }
+
+        .print-only { display: none; }
+
+        @media print {
+            .nav { display: none; }
+            .print-only { display: block; }
+            section { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+            .header { padding: 1.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .role-grid { grid-template-columns: 1fr; }
+            .kpi-card { grid-template-columns: 1fr 1fr; }
+            .container { padding: 1rem; }
+            section { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Micka Onboarding</h1>
+    <p>Film-labor — Dein erster Tag als Terminsetzer</p>
+    <p style="opacity:0.6; margin-top:0.5rem;">Stand: 9. März 2026</p>
+</div>
+
+<div class="container">
+
+    <nav class="nav">
+        <h3>Schnellnavigation</h3>
+        <a href="#tldr">TL;DR</a>
+        <a href="#rolle">Deine Rolle</a>
+        <a href="#filmlabor">Was ist Film-labor?</a>
+        <a href="#pipeline">Die Pipeline</a>
+        <a href="#sequenz">Outreach-Sequenz</a>
+        <a href="#scripts">Telefon-Scripts</a>
+        <a href="#einwaende">Einwandbehandlung</a>
+        <a href="#airtable">Airtable CRM</a>
+        <a href="#tools">Deine Tools</a>
+        <a href="#tag1">Tag 1 Ablauf</a>
+        <a href="#kpis">KPIs</a>
+        <a href="#verguetung">Vergütung</a>
+        <a href="#dsgvo">DSGVO</a>
+        <a href="#checkliste">Checkliste</a>
+    </nav>
+
+    <!-- TL;DR -->
+    <section id="tldr">
+        <h2>TL;DR — Das Wichtigste in 30 Sekunden</h2>
+
+        <div class="big-box">
+            <h3>Dein Job in einem Satz</h3>
+            <p>Du rufst Leute an, die uns <strong>schon kennen</strong> (über LinkedIn).</p>
+            <p>Du sagst: <em>"Koren hatte dir auf LinkedIn geschrieben..."</em></p>
+            <p>Du buchst: <strong>15-Minuten-Termin</strong> mit Koren oder David.</p>
+            <span class="emphasis">Das ist alles. Kein Verkaufen. Kein Erklären. Nur Termin buchen.</span>
+        </div>
+
+        <div class="highlight-box">
+            <strong>Sofort-Aktion:</strong> Wir haben 65+ Leads die schon eine personalisierte LinkedIn-Nachricht bekommen haben und nicht geantwortet haben. Das sind <strong>warme Kontakte</strong> — die kennen den Namen "Koren" / "Film-labor" bereits. Die rufst du an.
+        </div>
+    </section>
+
+    <!-- DEINE ROLLE -->
+    <section id="rolle">
+        <h2>Deine Rolle — Terminsetzer</h2>
+
+        <div class="role-grid">
+            <div class="role-yes">
+                <h4>Du BIST:</h4>
+                <ul>
+                    <li>Terminsetzer</li>
+                    <li>Freundlich &amp; natürlich</li>
+                    <li>Referenziert LinkedIn-Kontext</li>
+                    <li>Bucht Termin in Kalender</li>
+                    <li>Behandelt Einwände (mit Script)</li>
+                </ul>
+            </div>
+            <div class="role-no">
+                <h4>Du bist NICHT:</h4>
+                <ul>
+                    <li>Verkäufer</li>
+                    <li>Produkt-Erklärer</li>
+                    <li>In Diskussionen verwickelt</li>
+                    <li>Preise-Nenner (nur grob)</li>
+                    <li>Improvisierer</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>Dein einziges Ziel:</strong> "15-Minuten-Termin mit Koren oder David buchen." Mehr nicht. Wenn die Person mehr wissen will → "Das erklärt Koren dir im Termin viel besser als ich."
+        </div>
+    </section>
+
+    <!-- WAS IST FILM-LABOR -->
+    <section id="filmlabor">
+        <h2>Was ist Film-labor?</h2>
+
+        <blockquote>
+            "Wir machen Recruiting- und Produktvideos für Industriefirmen. 1 Drehtag, 5+ Videos. Koren ist Biochemiker und versteht die Maschinen — deshalb brauchen die Kunden kein langes Briefing."
+        </blockquote>
+
+        <h3>Zielgruppe</h3>
+        <p>Geschäftsführer und Vertriebsleiter bei <strong>Maschinenbau, Chemie, Pharma, Fertigung</strong> (50-500 Mitarbeiter)</p>
+
+        <h3>Typische Probleme der Kunden</h3>
+        <table>
+            <tr><th>Was sie sagen</th><th>Was es bedeutet</th></tr>
+            <tr><td>"Unser Vertrieb erklärt jedes Gespräch das Gleiche"</td><td>Brauchen Produktvideo</td></tr>
+            <tr><td>"Auf der Messe versteht keiner was wir machen"</td><td>Brauchen Erklärvideo</td></tr>
+            <tr><td>"Wir finden keine guten Bewerber"</td><td>Brauchen Recruiting-Video</td></tr>
+            <tr><td>"Unsere Website zeigt Stockfotos"</td><td>Brauchen Imagefilm</td></tr>
+        </table>
+
+        <h3>Pakete</h3>
+        <table>
+            <tr><th>Paket</th><th>Inhalt</th><th>Preis</th></tr>
+            <tr><td>Basic</td><td>1 Video</td><td>ab 2.000€</td></tr>
+            <tr><td>Standard</td><td>3 Videos</td><td>ab 5.000€</td></tr>
+            <tr><td>Premium</td><td>5+ Videos</td><td>ab 8.000€</td></tr>
+        </table>
+
+        <p><strong>Referenz-Projekt:</strong> Noga Engineering (Maschinenbau) — Produktvideo, wird vom Vertrieb täglich eingesetzt.</p>
+    </section>
+
+    <!-- PIPELINE -->
+    <section id="pipeline">
+        <h2>Woher kommen die Leads?</h2>
+
+        <div class="pipeline-diagram">
+OMER (Bruder)          CLAUDE AI              KOREN
+sendet täglich    →    generiert          →   schickt Voice
+15-20 Connection       personalisierte        Memos + Text
+Requests auf           Nachrichten            auf LinkedIn
+LinkedIn               + Research
+
+      ↓                      ↓                     ↓
+═══════════════════════════════════════════════════════
+│            AIRTABLE — LEADS DATENBANK              │
+│    875 Leads, recherchiert, mit Nachricht           │
+═══════════════════════════════════════════════════════
+                        ↓
+                  MICKA RUFT AN
+                  (die, die nicht
+                   geantwortet haben)
+                        ↓
+                  TERMIN GEBUCHT
+                        ↓
+                  DAVID / KOREN
+                  → Closing Call
+                  → Angebot → Kunde
+        </div>
+
+        <h3>Warum LinkedIn-Leads anrufen (nicht kalt)?</h3>
+        <table>
+            <tr><th>Methode</th><th>Terminquote</th><th>Warum</th></tr>
+            <tr style="background:#e8f5e9; font-weight:600;">
+                <td>LinkedIn-Leads anrufen</td>
+                <td>~15%</td>
+                <td>Person kennt schon "Koren", wurde recherchiert, hat personalisierte Nachricht bekommen</td>
+            </tr>
+            <tr>
+                <td>Messe-Kontakte anrufen</td>
+                <td>~5-8%</td>
+                <td>Oft alt, kein Bezug, Person erinnert sich kaum</td>
+            </tr>
+            <tr>
+                <td>Kalt anrufen (Telefonbuch)</td>
+                <td>~1-3%</td>
+                <td>Null Bezug, Person genervt</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- OUTREACH SEQUENZ -->
+    <section id="sequenz">
+        <h2>Die Outreach-Sequenz (15 Tage)</h2>
+        <p>Jeder Lead durchläuft diesen Ablauf. <strong>Du kommst bei Tag 10-12.</strong></p>
+
+        <div class="sequence-timeline">
+            <div class="timeline-item">
+                <strong>Tag 0</strong> — <span class="tag tag-bruder">Omer</span><br>
+                Connection Request auf LinkedIn (ohne Nachricht)
+            </div>
+            <div class="timeline-item">
+                <strong>Tag 1</strong> — <span class="tag tag-bruder">Omer</span><br>
+                Text-Opener nach Annahme (&lt; 280 Zeichen)
+            </div>
+            <div class="timeline-item">
+                <strong>Tag 5-7</strong> — <span class="tag tag-koren">Koren</span><br>
+                Whiteboard-Foto + Sprachmemo (20-30 Sek) + Text-Follow-Up
+            </div>
+            <div class="timeline-item">
+                <strong>Tag 8</strong> — <span class="tag tag-bruder">Omer</span><br>
+                "Hat die Sprachnachricht funktioniert?"
+            </div>
+            <div class="timeline-item active">
+                <strong>Tag 10-12</strong> — <span class="tag tag-micka">MICKA</span><br>
+                <strong>Anruf!</strong> Referenziert Voice Memo → Termin setzen
+            </div>
+            <div class="timeline-item">
+                <strong>Tag 14</strong> — <span class="tag tag-bruder">Omer</span><br>
+                Letzte LinkedIn-Nachricht
+            </div>
+            <div class="timeline-item">
+                <strong>Tag 14+</strong> — STOP<br>
+                4-6 Wochen Pause, dann neuer Kontext
+            </div>
+        </div>
+    </section>
+
+    <!-- TELEFON-SCRIPTS -->
+    <section id="scripts">
+        <h2>Die 3 Telefon-Scripts</h2>
+
+        <div class="warning-box">
+            <strong>Tipp:</strong> Druck diese Scripts aus und leg sie neben dein Telefon. Erster Take ist immer der beste — nicht overthink-en!
+        </div>
+
+        <div class="script-card">
+            <span class="label">FÜR 80% DER CALLS</span>
+            <h4>Script A — Standard-Opener</h4>
+            <blockquote>
+                "Hi [Vorname], hier ist Micha von Film-labor. Ganz kurz —
+                Koren Pollak hatte dir auf LinkedIn eine Nachricht geschickt
+                wegen [Thema: Recruiting / Employer Branding / eurer Außendarstellung].
+                Hast du die zufällig gesehen?"
+            </blockquote>
+
+            <h4>Wenn JA:</h4>
+            <blockquote>
+                "Super! Ist das Thema gerade relevant für euch?"
+            </blockquote>
+
+            <h4>Wenn NEIN / "Welche Nachricht?":</h4>
+            <blockquote>
+                "Kein Problem! Kurz: Koren hatte ne Idee wie [Firma]
+                mit einem kurzen Video [mehr Bewerbungen / mehr Sichtbarkeit]
+                erreichen könnte. Wäre es okay wenn er dir in 15 Min
+                mal zeigt was er meint?"
+            </blockquote>
+        </div>
+
+        <div class="script-card">
+            <span class="label">SANFTER EINSTIEG</span>
+            <h4>Script B — Permission-Based</h4>
+            <blockquote>
+                "Hi [Vorname], Micha von Film-labor. Darf ich 20 Sekunden haben?
+                Wenn's nicht passt, leg ich sofort auf. Versprochen."
+            </blockquote>
+            <h4>Nach OK:</h4>
+            <blockquote>
+                "Cool, danke. Koren hatte dir auf LinkedIn geschrieben wegen [Thema].
+                Kein Verkaufsgespräch — er zeigt dir nur die Richtung.
+                Passt dir diese oder nächste Woche besser?"
+            </blockquote>
+        </div>
+
+        <div class="script-card">
+            <span class="label">STÄRKSTES SCRIPT</span>
+            <h4>Script C — Value-First</h4>
+            <blockquote>
+                "Hi [Vorname], Micha von Film-labor, ganz kurz.
+                Koren hat sich [Firma] angeschaut: [KONKRETES PROBLEM]
+            </blockquote>
+
+            <h4>Beispiele für [KONKRETES PROBLEM]:</h4>
+            <ul>
+                <li><em>"Ihr habt 5 offene Stellen seit 3 Monaten — das kostet wahrscheinlich 50.000€ an entgangenem Umsatz."</em></li>
+                <li><em>"Eure Karriereseite hat null Video — 73% der Bewerber schauen sich heute erst ein Video an bevor sie sich bewerben."</em></li>
+                <li><em>"Euer Wettbewerber [Name] hat gerade ein Recruiting-Video gemacht — und zieht damit eure potenziellen Bewerber ab."</em></li>
+            </ul>
+
+            <blockquote>
+                "Koren zeigt dir in 15 Minuten wie man das dreht.
+                Passt dir Dienstag oder Donnerstag besser?"
+            </blockquote>
+
+            <div class="highlight-box">
+                <strong>Warum Script C am stärksten ist:</strong>
+                Konkretes PROBLEM mit ZAHLEN, Wettbewerber-Vergleich erzeugt FOMO,
+                "Dienstag oder Donnerstag?" = Ja-oder-Ja statt Ja-oder-Nein.
+            </div>
+        </div>
+    </section>
+
+    <!-- EINWANDBEHANDLUNG -->
+    <section id="einwaende">
+        <h2>Einwandbehandlung</h2>
+        <p>Diese Antworten ausdrucken und neben das Telefon legen!</p>
+
+        <table>
+            <tr>
+                <th style="width:30%">Einwand</th>
+                <th>Deine Antwort</th>
+            </tr>
+            <tr>
+                <td><strong>"Kein Interesse"</strong></td>
+                <td>"Verstehe! Liegt es daran dass ihr keine Recruiting-Probleme habt, oder ist Video generell kein Thema?"<br><br>
+                    <em>Wenn kein Recruiting-Problem:</em> "Top, das ist selten! Darf ich in 3 Monaten nochmal fragen?"<br>
+                    <em>Wenn Video kein Thema:</em> "Darf Koren dir trotzdem mal ein 30-Sekunden-Beispiel schicken? Nur zum Anschauen."
+                </td>
+            </tr>
+            <tr>
+                <td><strong>"Schick mir ne Mail"</strong></td>
+                <td>"Mach ich! Ist [mail] richtig? Was wäre relevanter — Recruiting oder eher Imagefilm?"<br>
+                    <em>→ Mail + Antwort in Airtable notieren!</em>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>"Haben schon jemanden"</strong></td>
+                <td>"Super! Seid ihr zufrieden mit den Ergebnissen? Falls ihr mal vergleichen wollt — 15 Min reichen."</td>
+            </tr>
+            <tr>
+                <td><strong>"Was kostet das?"</strong></td>
+                <td>"Ab ca. 2.000€, aber Koren zeigt euch erstmal ob es Sinn macht. Erstgespräch kostet nix."</td>
+            </tr>
+            <tr>
+                <td><strong>"Ruf später an"</strong></td>
+                <td>"Klar! Anfang oder Ende der Woche besser?"<br>
+                    <em>→ Konkretes Datum vereinbaren + in Airtable eintragen!</em>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- AIRTABLE -->
+    <section id="airtable">
+        <h2>Airtable CRM — Deine Anrufliste</h2>
+
+        <p>In Airtable findest du deine <strong>Anrufliste</strong> mit allen Infos pro Lead:</p>
+
+        <table>
+            <tr><th>Feld</th><th>Was steht da</th></tr>
+            <tr><td>Name</td><td>Vorname + Nachname</td></tr>
+            <tr><td>Firma</td><td>Unternehmensname</td></tr>
+            <tr><td>Telefonnummer</td><td>Zum Anrufen</td></tr>
+            <tr><td>Branche</td><td>Maschinenbau, Pharma, etc.</td></tr>
+            <tr><td>Personalisierte Nachricht</td><td>Was Koren auf LinkedIn geschrieben hat</td></tr>
+            <tr><td>Wie wir helfen können</td><td>Talking Points für deinen Call</td></tr>
+            <tr><td>Voice Memo Script</td><td>Was Koren als Sprachmemo gesagt hat</td></tr>
+        </table>
+
+        <h3>Nach JEDEM Call eintreten:</h3>
+        <table>
+            <tr><th>Feld</th><th>Optionen</th></tr>
+            <tr><td>Anruf Ergebnis</td><td>Erreicht / Mailbox / Termin gebucht / Rückruf / Abgelehnt / E-Mail gewünscht</td></tr>
+            <tr><td>Anruf Notizen</td><td>1-2 Sätze was rauskam</td></tr>
+            <tr><td>Anruf Datum</td><td>Heutiges Datum</td></tr>
+        </table>
+
+        <div class="warning-box">
+            <strong>Wichtig:</strong> SOFORT nach jedem Call eintragen — nicht am Ende des Tages. Sonst vergisst du Details.
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section id="tools">
+        <h2>Deine Tools</h2>
+        <table>
+            <tr><th>Tool</th><th>Wofür</th></tr>
+            <tr><td><strong>Airtable</strong></td><td>Anrufliste sehen, Ergebnisse eintragen</td></tr>
+            <tr><td><strong>Calendly</strong></td><td>Termine buchen (Korens/Davids Link)</td></tr>
+            <tr><td><strong>WhatsApp</strong></td><td>Tages-Summary an Koren schicken</td></tr>
+            <tr><td><strong>Dein Telefon</strong></td><td>Anrufen</td></tr>
+        </table>
+    </section>
+
+    <!-- TAG 1 -->
+    <section id="tag1">
+        <h2>Tag 1 — Ablauf (Montag, 9. März)</h2>
+
+        <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+                <strong>Film-labor verstehen (30 Min)</strong>
+                Was wir machen, für wen, welche Ergebnisse. Den Satz oben lernen.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+                <strong>Airtable kennenlernen (15 Min)</strong>
+                View "Anrufliste" öffnen. Felder verstehen. Eintragen üben.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+                <strong>Scripts durchgehen + ausdrucken (15 Min)</strong>
+                3 Scripts + Einwandbehandlung auf Papier neben dem Telefon.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">4</span>
+            <div class="step-content">
+                <strong>Erste 3 Calls ZUSAMMEN mit Koren (30 Min)</strong>
+                Koren hört mit. Gibt nach jedem Call kurzes Feedback.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">5</span>
+            <div class="step-content">
+                <strong>Filmmaker Marketing — Sales Module anschauen (1 Std)</strong>
+                Nur die relevanten Module: Telefon-Akquise, Einwandbehandlung, Abschluss.
+            </div>
+        </div>
+
+        <div class="step">
+            <span class="step-number">6</span>
+            <div class="step-content">
+                <strong>Alleine weiter telefonieren (1-2 Std)</strong>
+                Ziel: 10-15 Calls am ersten Tag.
+            </div>
+        </div>
+    </section>
+
+    <!-- TÄGLICHER ABLAUF -->
+    <section>
+        <h2>Täglicher Ablauf (ab Tag 2)</h2>
+
+        <div class="pipeline-diagram">
+NACHMITTAGS (2-3 Stunden):
+
+1. Airtable öffnen → Anrufliste               (10 Min)
+   → Talking Points pro Lead kurz lesen
+
+2. Telefonieren: 10-15 Calls                   (2 Std)
+   → Script folgen
+   → SOFORT nach jedem Call eintragen:
+     • Anruf Ergebnis
+     • Anruf Notizen (1-2 Sätze)
+     • Bei Termin: Calendly-Link schicken
+
+3. Tages-Summary an Koren per WhatsApp          (1 Min)
+   "Heute 12 Calls, 5 erreicht, 2 Termine,
+    1 Rückruf Donnerstag"
+        </div>
+    </section>
+
+    <!-- KPIs -->
+    <section id="kpis">
+        <h2>KPIs — Woran du gemessen wirst</h2>
+
+        <div class="kpi-card">
+            <div class="kpi-item">
+                <span class="number">40</span>
+                <span class="label">Anrufe / Woche</span>
+            </div>
+            <div class="kpi-item">
+                <span class="number">16</span>
+                <span class="label">Davon erreicht (40%)</span>
+            </div>
+            <div class="kpi-item">
+                <span class="number">5</span>
+                <span class="label">Termine / Woche</span>
+            </div>
+            <div class="kpi-item">
+                <span class="number">1-2</span>
+                <span class="label">Abschlüsse / Woche</span>
+            </div>
+        </div>
+
+        <h3>Was realistisch am ersten Tag passiert</h3>
+        <table>
+            <tr><th>Metrik</th><th>Erwartung Tag 1</th></tr>
+            <tr><td>Calls</td><td>10-15 (mit Einarbeitung)</td></tr>
+            <tr><td>Davon erreicht</td><td>4-6</td></tr>
+            <tr><td>Termine</td><td>0-1 (wenn es gut läuft)</td></tr>
+        </table>
+    </section>
+
+    <!-- VERGÜTUNG -->
+    <section id="verguetung">
+        <h2>Vergütung</h2>
+
+        <table>
+            <tr><th>Komponente</th><th>Betrag</th></tr>
+            <tr><td>MiniJob Fix</td><td><strong>538€ / Monat</strong></td></tr>
+            <tr><td>Provision</td><td><strong>10%</strong> vom Netto-Auftragswert</td></tr>
+        </table>
+
+        <h3>Provisions-Beispiele</h3>
+        <table>
+            <tr><th>Auftrag</th><th>Wert</th><th>Deine Provision</th></tr>
+            <tr><td>Basic (1 Video)</td><td>2.000€</td><td><strong>200€</strong></td></tr>
+            <tr><td>Standard (3 Videos)</td><td>5.000€</td><td><strong>500€</strong></td></tr>
+            <tr><td>Premium (5+ Videos)</td><td>8.000€+</td><td><strong>800€+</strong></td></tr>
+        </table>
+
+        <div class="highlight-box">
+            <strong>Provision wird ausgezahlt</strong> wenn ein Termin, den DU gesetzt hast, zu einem Abschluss führt. Tracking läuft über Airtable.
+        </div>
+    </section>
+
+    <!-- DSGVO -->
+    <section id="dsgvo">
+        <h2>DSGVO — Pflicht bei jedem Anruf</h2>
+
+        <div class="danger-box">
+            <strong>Wenn du ein Gespräch aufnehmen willst:</strong><br><br>
+            <blockquote style="background:white;">
+                "Bevor wir starten — ich würde das Gespräch gerne kurz aufnehmen, damit ich nichts Wichtiges vergesse. Ist das für Sie in Ordnung?"
+            </blockquote>
+            <br>
+            <strong>JA</strong> → Aufnehmen<br>
+            <strong>NEIN</strong> → Nicht aufnehmen, Notizen machen<br><br>
+            <em>Ohne Einwilligung = bis 3 Jahre Freiheitsstrafe (§201 StGB)</em>
+        </div>
+    </section>
+
+    <!-- ERSTE WOCHE -->
+    <section>
+        <h2>Deine erste Woche</h2>
+        <table>
+            <tr><th>Tag</th><th>Was passiert</th></tr>
+            <tr><td><strong>Montag</strong></td><td>Onboarding mit Koren. Erste 3 Calls zusammen. Filmmaker Marketing Videos.</td></tr>
+            <tr><td><strong>Di - Fr</strong></td><td>Alleine telefonieren (2-3 Std/Tag) + 1h/Tag Filmmaker Marketing (Sales-Module)</td></tr>
+            <tr><td><strong>Freitag</strong></td><td>Wochen-Review: Was hat funktioniert? Welche Einwände kamen?</td></tr>
+        </table>
+
+        <div class="warning-box">
+            <strong>Koren's Rolle diese Woche:</strong><br>
+            Tag 1: Erste 3 Calls zusammen.<br>
+            Tag 2-3: Du alleine. Abends Tages-Summary lesen.<br>
+            Tag 4-5: 2-3 Calls mithören (Stichprobe).<br>
+            Freitag: Gemeinsames Review.
+        </div>
+    </section>
+
+    <!-- CHECKLISTE -->
+    <section id="checkliste">
+        <h2>Onboarding-Checkliste</h2>
+
+        <ul class="checklist">
+            <li>Film-labor erklären: Was macht ihr, für wen, welche Ergebnisse (30 Min)</li>
+            <li>Airtable View "Anrufliste" einrichten + zeigen (15 Min)</li>
+            <li>3 Scripts ausdrucken + Einwandbehandlung</li>
+            <li>Erste 3 Calls zusammen machen — Koren hört mit (30 Min)</li>
+            <li>Ergebnis-Eintragung in Airtable üben (10 Min)</li>
+            <li>Calendly-Link geben für Terminbuchung (5 Min)</li>
+            <li>WhatsApp-Gruppe erstellen: Koren + Micka (2 Min)</li>
+            <li>Filmmaker Marketing — Sales-Module zeigen (Zugang geben)</li>
+        </ul>
+    </section>
+
+    <!-- ZUSAMMENFASSUNG -->
+    <section>
+        <div class="big-box">
+            <h3>Zusammenfassung</h3>
+            <p><strong>65+ warme Leads warten auf deinen Anruf.</strong></p>
+            <p>Die kennen uns schon. Du brauchst nur den Termin zu buchen.</p>
+            <p>Script folgen. Ergebnis eintragen. Summary an Koren.</p>
+            <span class="emphasis">Los geht's!</span>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
